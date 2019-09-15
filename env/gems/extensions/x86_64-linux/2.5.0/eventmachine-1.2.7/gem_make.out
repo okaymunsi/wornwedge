@@ -1,0 +1,16 @@
+current directory: /home/mak/Projects/wornwedge/env/gems/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/bin/ruby2.5 -r ./siteconf20190914-5689-zaafus.rb extconf.rb
+creating Makefile
+
+current directory: /home/mak/Projects/wornwedge/env/gems/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /home/mak/Projects/wornwedge/env/gems/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR="
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /home/mak/Projects/wornwedge/env/gems/gems/eventmachine-1.2.7/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20190914-5689-idx7m7
