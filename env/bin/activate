@@ -32,6 +32,10 @@ deactivate () {
     # Self destruct!
         unset -f deactivate
     fi
+
+    # Clean up Ruby Gem Paths
+    unset GEM_PATH
+    unset GEM_HOME
 }
 
 # unset irrelevant variables
@@ -40,7 +44,15 @@ deactivate nondestructive
 VIRTUAL_ENV="/home/mak/Projects/wornwedge/env"
 export VIRTUAL_ENV
 
+# Setup Path (Part 1)
 _OLD_VIRTUAL_PATH="$PATH"
+
+# Setup Ruby Gem Paths
+export GEM_HOME="$VIRTUAL_ENV/gems"
+export GEM_PATH=""
+export PATH="$PATH:$GEM_HOME/bin"
+
+# Setup Path (Part 2)
 PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH
 
