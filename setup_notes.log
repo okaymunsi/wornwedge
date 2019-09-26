@@ -28,6 +28,20 @@ Setting up nginx
         Check status:
         sudo ufw status
 
+	* NOTE: By default when setting up server, it will..
+		deny all incoming traffic
+		allow all outgoing traffic
+
+		so, by default, ssh will not be supported on default port 22
+
+	So, run..
+		sudo ufw allow ssh
+		and check with..
+		sudo ufw status verbose
+
+		https://linuxize.com/post/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/#open-port-80-http
+
+
 4. Websites go here : /var/www/<make_a_dir_in_here>/<all_my_html_files_go_here>
    Nginx available sites go here : /etc/nginx/sites-available/example.com
    Nginx active sites go here : /etc/nginx/sites-enabled/example.com
