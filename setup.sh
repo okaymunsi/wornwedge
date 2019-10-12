@@ -25,7 +25,7 @@ setup_project(){
     # 2. Bundler
     # 3. Jekyll
     # 4. Nginx
-    for pkg in "ruby-full" "build-essential" "nginx" "zlib1g-dev" "rsync"
+    for pkg in "ruby-full" "build-essential" "nginx" "zlib1g-dev" "rsync" "python"
     do
         ec=$(check_if_installed $pkg)
         if [ $ec -ne 0 ]
@@ -67,6 +67,7 @@ check_if_installed(){
 
 main(){
     setup_project
+    exit 0
 }
 
 main
