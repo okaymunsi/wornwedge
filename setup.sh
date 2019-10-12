@@ -13,10 +13,10 @@ setup_project(){
     #cd wornwedge/ || { echo "could not enter wornwedge"; exit; }
 
     # Check if in the correct dir
-    [[ "$PWD" =~ wornwedge ]] || { echo "Please run setup.sh from wornwedge/ dir"; exit 1; }
+    [[ "$PWD" =~ wornwedge ]] || { echo "Please run setup.sh from wornwedge/ dir"; return; }
 
-    [[ -f "$PWD"/env/bin/activate ]] || { echo "Could not find .../activate "; exit 1; }
-    source env/bin/activate
+    [[ -f "$PWD"/env/bin/activate ]] || { echo "Could not find .../activate "; return; }
+    source ./env/bin/activate || { echo "Could not activate "; return; }
 
     # Source env/bin/activate
     # Check for..
@@ -36,27 +36,27 @@ setup_project(){
     done
 
     # Install jekyll, bundler
-    gem install jekyll bundler || { echo "Could not install jekyll and bundler"; exit 1; }
+    gem install jekyll bundler || { echo "Could not install jekyll and bundler"; return; }
 
     # Which theme are you using?
     cd galileo-theme/
     
-    bundle || { echo "Could not bundle."; exit 1; }
+    bundle || { echo "Could not bundle."; return; }
 
-    bundle exec jekyll build || { echo "Could not run jekyll build"; exit 1; }
+    bundle exec jekyll build || { echo "Could not run jekyll build"; return; }
 
-    [ -d "$(pwd)/_site" ] || { echo "Did not build _site"; exit 1; }
+    [ -d "$(pwd)/_site" ] || { echo "Did not build _site"; return; }
 }
 
 install(){
     echo "Installing $1.."
-    sudo apt-get install --dry-run $1 1>/dev/null
+    sudo apt-get install -y $1 
     if [ $? -eq 0 ] 
     then
         echo "Succesful install of $1"
     else
         echo "Failed install of $1"
-        exit 1
+        return
     fi
 }
 
