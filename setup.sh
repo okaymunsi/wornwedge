@@ -67,7 +67,6 @@ check_if_installed(){
 
 main(){
     setup_project
-    exit 0
 }
 
 main
