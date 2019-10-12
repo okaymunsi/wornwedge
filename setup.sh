@@ -25,7 +25,7 @@ setup_project(){
     # 2. Bundler
     # 3. Jekyll
     # 4. Nginx
-    for pkg in "ruby-full" "build-essential" "nginx" "zlib1g-dev"
+    for pkg in "ruby-full" "build-essential" "nginx" "zlib1g-dev" "rsync"
     do
         ec=$(check_if_installed $pkg)
         if [ $ec -ne 0 ]
@@ -40,11 +40,10 @@ setup_project(){
 
     # Which theme are you using?
     cd galileo-theme/
-    
+   
+    # Install gem dependencies and build project
     bundle || { echo "Could not bundle."; return; }
-
     bundle exec jekyll build || { echo "Could not run jekyll build"; return; }
-
     [ -d "$(pwd)/_site" ] || { echo "Did not build _site"; return; }
 }
 
