@@ -12,8 +12,8 @@ SITE="wornwedge"
 [[ "$PWD" =~ $1 ]] || { echo "Please be in $1/ dir"; exit 1; }
 
 # Check if in VENV
-INVENV=$(python -c 'import sys; print ("1" if hasattr(sys, "real_prefix") else "0")')
-[[ $INVENV -eq "0" ]] && { echo "Please be inside $1 VENV"; exit 1; }
+#INVENV=$(python -c 'import sys; print ("1" if hasattr(sys, "real_prefix") else "0")')
+#[[ $INVENV -eq "0" ]] && { echo "Please be inside $1 VENV"; exit 1; }
 
 # Build site
 bundle exec jekyll build
