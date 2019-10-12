@@ -13,6 +13,10 @@ setup_project(){
     #cd wornwedge/ || { echo "could not enter wornwedge"; exit; }
 
     # Check if in the correct dir
+    [[ "$PWD" =~ wornwedge ]] || { echo "Please run setup.sh from wornwedge/ dir"; exit 1; }
+
+    [[ -f "$PWD"/env/bin/activate ]] || { echo "Could not find .../activate "; exit 1; }
+    source env/bin/activate
 
     # Source env/bin/activate
     # Check for..
